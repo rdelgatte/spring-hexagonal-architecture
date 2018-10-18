@@ -4,11 +4,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>infrastructure</artifactId>
-    <groupId>com.github.rdelgatte</groupId>
+    <groupId>com.rdelgatte.hexagonal</groupId>
     <version>1.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+    <assertj-core.version>3.9.0</assertj-core.version>
+  </properties>
 
   <artifactId>client</artifactId>
   <dependencies>
@@ -32,14 +36,27 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.github.rdelgatte</groupId>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj-core.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.rdelgatte.hexagonal</groupId>
       <artifactId>memory-persistence</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <scope>test</scope>
+      <groupId>com.rdelgatte.hexagonal</groupId>
+      <artifactId>mysql-persistence</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.rdelgatte.hexagonal</groupId>
+      <artifactId>postgres-persistence</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
@@ -52,7 +69,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
     </dependencies>
   </dependencyManagement>
 
@@ -61,6 +77,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.0.6.RELEASE</version>
       </plugin>
     </plugins>
   </build>
