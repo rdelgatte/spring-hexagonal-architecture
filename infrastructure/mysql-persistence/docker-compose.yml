@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  mysql-db:
+    image: mysql:5.7
+    environment:
+    - MYSQL_USER=hexagonal
+    - MYSQL_PASSWORD=hexagonal
+    - MYSQL_ROOT_PASSWORD=hexagonal
+    - MYSQL_DATABASE=hexagonal
+    ports:
+    - "3306:3306"
+
