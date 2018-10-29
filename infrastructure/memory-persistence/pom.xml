@@ -2,29 +2,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <artifactId>infrastructure</artifactId>
     <groupId>com.rdelgatte.hexagonal</groupId>
     <version>1.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-  <modelVersion>4.0.0</modelVersion>
 
   <artifactId>memory-persistence</artifactId>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
-      </plugin>
-    </plugins>
-  </build>
+  <version>1.0-SNAPSHOT</version>
+  <name>memory-persistence</name>
+  <description>Persistence layer for Hexagonal based on memory</description>
 
   <properties>
     <junit-jupiter.version>5.2.0</junit-jupiter.version>
     <junit-platform.version>1.2.0</junit-platform.version>
     <assertj-core.version>3.9.0</assertj-core.version>
+    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
   </properties>
 
   <dependencies>
@@ -62,14 +58,16 @@
       <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <!-- A temporary Mockito extension. Will be removed once Mockito creates their own.
-       See https://github.com/mockito/mockito/issues/445 -->
-      <groupId>name.falgout.jeffrey.testing.junit5</groupId>
-      <artifactId>mockito-extension</artifactId>
-      <version>1.0.0</version>
-    </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

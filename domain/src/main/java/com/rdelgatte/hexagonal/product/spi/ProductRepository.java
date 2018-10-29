@@ -5,7 +5,7 @@ import io.vavr.collection.List;
 import io.vavr.control.Option;
 import java.util.UUID;
 
-public interface PriceRepository {
+public interface ProductRepository {
 
   Product addProduct(Product product);
 

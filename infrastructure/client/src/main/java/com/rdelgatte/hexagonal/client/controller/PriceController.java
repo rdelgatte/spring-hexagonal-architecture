@@ -28,5 +28,4 @@ class PriceController {
     return priceService.getAllPrices();
   }
 
-
 }
