@@ -25,5 +25,4 @@ class InMemoryProductRepositoryTest {
     assertThat(cut.getInMemoryProducts()).isEqualTo(List(product));
   }
 
-
 }

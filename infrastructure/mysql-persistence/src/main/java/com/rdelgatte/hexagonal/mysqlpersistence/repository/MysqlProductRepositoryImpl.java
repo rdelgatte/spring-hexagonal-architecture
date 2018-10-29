@@ -1,7 +1,7 @@
 package com.rdelgatte.hexagonal.mysqlpersistence.repository;
 
 import com.rdelgatte.hexagonal.mysqlpersistence.model.MysqlProduct;
-import com.rdelgatte.hexagonal.product.spi.PriceRepository;
+import com.rdelgatte.hexagonal.product.spi.ProductRepository;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
 import java.util.UUID;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-public class MysqlProductRepositoryImpl implements PriceRepository {
+public class MysqlProductRepositoryImpl implements ProductRepository {
 
-  private ProductRepository productRepository;
+  private com.rdelgatte.hexagonal.mysqlpersistence.repository.ProductRepository productRepository;
 
   @Override
   public com.rdelgatte.hexagonal.product.domain.Product addProduct(

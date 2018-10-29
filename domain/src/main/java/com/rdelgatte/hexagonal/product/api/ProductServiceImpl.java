@@ -1,16 +1,16 @@
 package com.rdelgatte.hexagonal.product.api;
 
 import com.rdelgatte.hexagonal.product.domain.Product;
-import com.rdelgatte.hexagonal.product.spi.PriceRepository;
+import com.rdelgatte.hexagonal.product.spi.ProductRepository;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
 import java.util.UUID;
 
 public class ProductServiceImpl implements ProductService {
 
-  private final PriceRepository productRepository;
+  private final ProductRepository productRepository;
 
-  public ProductServiceImpl(PriceRepository productRepository) {
+  public ProductServiceImpl(ProductRepository productRepository) {
     this.productRepository = productRepository;
   }
 
