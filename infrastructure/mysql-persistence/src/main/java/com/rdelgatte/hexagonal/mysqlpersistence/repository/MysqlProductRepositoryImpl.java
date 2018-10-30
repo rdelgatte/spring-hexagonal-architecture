@@ -28,8 +28,8 @@ public class MysqlProductRepositoryImpl implements ProductRepository {
   }
 
   @Override
-  public Option<com.rdelgatte.hexagonal.product.domain.Product> findProductById(UUID productId) {
-    return Option.ofOptional(productRepository.findById(productId).map(MysqlProduct::toDomain));
+  public Option<com.rdelgatte.hexagonal.product.domain.Product> findProductByCode(String code) {
+    return productRepository.findOneByCode(code).map(MysqlProduct::toDomain);
   }
 
   @Override

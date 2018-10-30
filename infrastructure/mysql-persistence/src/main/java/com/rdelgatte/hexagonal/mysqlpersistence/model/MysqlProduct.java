@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class MysqlProduct {
 
   @Id
-  private UUID id;
+  private UUID id = UUID.randomUUID();
   private String code = "";
   private String label = "";
 

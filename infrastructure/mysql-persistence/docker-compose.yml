@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  mysql-db:
+  database:
     image: mysql:5.7
     environment:
     - MYSQL_USER=hexagonal

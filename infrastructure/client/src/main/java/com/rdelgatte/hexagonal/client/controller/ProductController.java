@@ -4,8 +4,6 @@ import com.rdelgatte.hexagonal.product.api.ProductService;
 import com.rdelgatte.hexagonal.product.domain.Product;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
-import java.util.UUID;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +20,7 @@ public
 class ProductController {
 
   static final String BASE_PATH = "products";
-  static final String RESOURCE_PATH = "{productId}";
+  private static final String RESOURCE_PATH = "{code}";
   private final ProductService productService;
 
   @PostMapping
@@ -36,13 +34,13 @@ class ProductController {
   }
 
   @GetMapping(RESOURCE_PATH)
-  Option<Product> findById(@PathVariable @NotNull UUID productId) {
-    return productService.findProductById(productId);
+  Option<Product> find(@PathVariable String code) {
+    return productService.findProductByCode(code);
   }
 
   @DeleteMapping(RESOURCE_PATH)
-  void delete(@PathVariable @NotNull UUID productId) {
-    productService.deleteProduct(productId);
+  void delete(@PathVariable String code) {
+    productService.deleteProduct(code);
   }
 
 

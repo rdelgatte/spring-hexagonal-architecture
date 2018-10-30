@@ -29,8 +29,8 @@ public class InMemoryProductRepository implements ProductRepository {
     this.inMemoryProducts = getInMemoryProducts().filter(product -> !product.getId().equals(productId));
   }
 
-  public Option<Product> findProductById(UUID productId) {
-    return getInMemoryProducts().find(product -> product.getId().equals(productId));
+  public Option<Product> findProductByCode(String code) {
+    return getInMemoryProducts().find(product -> product.getCode().equals(code));
   }
 
   public List<Product> findAllProducts() {

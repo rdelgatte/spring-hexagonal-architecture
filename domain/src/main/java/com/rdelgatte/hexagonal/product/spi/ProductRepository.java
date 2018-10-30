@@ -11,7 +11,7 @@ public interface ProductRepository {
 
   void deleteProduct(UUID productId);
 
-  Option<Product> findProductById(UUID productId);
+  Option<Product> findProductByCode(String code);
 
   List<Product> findAllProducts();
 }
