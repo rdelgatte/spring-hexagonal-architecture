@@ -4,7 +4,6 @@ import com.rdelgatte.hexagonal.price.domain.Price;
 import com.rdelgatte.hexagonal.price.spi.PriceRepository;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
-import java.util.UUID;
 
 public class PriceServiceImpl implements PriceService {
 
@@ -23,18 +22,7 @@ public class PriceServiceImpl implements PriceService {
     return priceRepository.addPrice(price);
   }
 
-  public void deletePrice(UUID id) {
-    if (findPriceById(id).isEmpty()) {
-      throw new IllegalArgumentException("Price " + id.toString() + " does not exist");
-    }
-    priceRepository.deletePrice(id);
-  }
-
   public List<Price> getAllPrices() {
     return priceRepository.findAllPrices();
-  }
-
-  public Option<Price> findPriceById(UUID priceId) {
-    return priceRepository.findPriceById(priceId);
   }
 }
