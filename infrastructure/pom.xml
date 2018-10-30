@@ -17,7 +17,7 @@
   <modules>
     <module>memory-persistence</module>
     <module>mysql-persistence</module>
-    <module>client</module>
+    <module>rest-client</module>
   </modules>
 
   <properties>
