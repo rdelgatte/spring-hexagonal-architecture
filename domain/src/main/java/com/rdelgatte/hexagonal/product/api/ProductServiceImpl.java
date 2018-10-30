@@ -4,7 +4,6 @@ import com.rdelgatte.hexagonal.product.domain.Product;
 import com.rdelgatte.hexagonal.product.spi.ProductRepository;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
-import java.util.UUID;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -15,26 +14,27 @@ public class ProductServiceImpl implements ProductService {
   }
 
   public Product createProduct(Product product) {
-    Option<Product> productById = productRepository.findProductById(product.getId());
+    Option<Product> productById = productRepository.findProductByCode(product.getCode());
     if (productById.isDefined()) {
       throw new IllegalArgumentException(
-          "Product " + product.getId().toString() + " already exists so you can't create it");
+          "Product " + product.getCode() + " already exists so you can't create it");
     }
     return productRepository.addProduct(product);
   }
 
-  public void deleteProduct(UUID id) {
-    if (findProductById(id).isEmpty()) {
-      throw new IllegalArgumentException("Product " + id.toString() + " does not exist");
+  public void deleteProduct(String code) {
+    Option<Product> productByCode = findProductByCode(code);
+    if (productByCode.isEmpty()) {
+      throw new IllegalArgumentException("Product " + code + " does not exist");
     }
-    productRepository.deleteProduct(id);
+    productRepository.deleteProduct(productByCode.get().getId());
   }
 
   public List<Product> getAllProducts() {
     return productRepository.findAllProducts();
   }
 
-  public Option<Product> findProductById(UUID productId) {
-    return productRepository.findProductById(productId);
+  public Option<Product> findProductByCode(String code) {
+    return productRepository.findProductByCode(code);
   }
 }
