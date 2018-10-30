@@ -4,6 +4,7 @@ import com.rdelgatte.hexagonal.product.domain.Product;
 import com.rdelgatte.hexagonal.product.spi.ProductRepository;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
+import lombok.NonNull;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -14,6 +15,9 @@ public class ProductServiceImpl implements ProductService {
   }
 
   public Product createProduct(Product product) {
+    if (product.getCode().isEmpty()) {
+      throw new IllegalArgumentException("There is no code for the product");
+    }
     Option<Product> productById = productRepository.findProductByCode(product.getCode());
     if (productById.isDefined()) {
       throw new IllegalArgumentException(
@@ -22,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     return productRepository.addProduct(product);
   }
 
-  public void deleteProduct(String code) {
+  public void deleteProduct(@NonNull String code) {
     Option<Product> productByCode = findProductByCode(code);
     if (productByCode.isEmpty()) {
       throw new IllegalArgumentException("Product " + code + " does not exist");
