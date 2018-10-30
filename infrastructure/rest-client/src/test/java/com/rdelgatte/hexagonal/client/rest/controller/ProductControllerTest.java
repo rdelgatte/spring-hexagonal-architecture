@@ -17,6 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import static io.vavr.API.Option;
+import static io.vavr.API.None;
+
 @ExtendWith(MockitoExtension.class)
 class ProductControllerTest {
 
@@ -39,7 +42,6 @@ class ProductControllerTest {
     when(productServiceMock.createProduct(product)).thenReturn(product);
 
     cut.createProduct(product);
-
     verify(productServiceMock).createProduct(product);
   }
 
@@ -47,7 +49,7 @@ class ProductControllerTest {
    * {@link ProductController#findAll()}
    */
   @Test
-  void findProducts() {
+  void findAllProducts() {
     when(productServiceMock.getAllProducts()).thenReturn(List(product));
 
     assertThat(cut.findAll()).containsExactly(product);
@@ -59,10 +61,22 @@ class ProductControllerTest {
   @Test
   void findProductByCode() {
     String productCode = "1616";
-//    when(productServiceMock.findProductByCode(productCode)).thenReturn(Option(product));
+    when(productServiceMock.findProductByCode(productCode)).thenReturn(Option(product));
 
     Option<Product> actual = cut.find(productCode);
     assertThat(actual).isEqualTo(product);
+  }
+  void findExistingProduct() {
+    when(productServiceMock.findProductByCode(product.getCode())).thenReturn(Option(product));
+
+    assertThat(cut.find(product.getCode())).isEqualTo(Option(product));
+  }
+
+  @Test
+  void findUnknownProduct() {
+    when(productServiceMock.findProductByCode(product.getCode())).thenReturn(None());
+
+    assertThat(cut.find(product.getCode())).isEqualTo(None());
   }
 
   /**
