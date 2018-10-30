@@ -1,21 +1,23 @@
 package com.rdelgatte.hexagonal.client.rest.controller;
 
 
-import static io.vavr.API.List;
-import static io.vavr.API.None;
-import static io.vavr.API.Option;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import com.rdelgatte.hexagonal.product.api.ProductService;
 import com.rdelgatte.hexagonal.product.domain.Product;
-import java.util.UUID;
 import name.falgout.jeffrey.testing.junit5.MockitoExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+
+import java.util.UUID;
+
+import static io.vavr.API.Option;
+import static io.vavr.API.List;
+import static io.vavr.API.None;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ProductControllerTest {
