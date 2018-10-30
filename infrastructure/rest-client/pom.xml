@@ -16,31 +16,15 @@
   <name>rest-client</name>
   <description>Client layer for Hexagonal based on rest endpoints</description>
 
-  <properties>
-    <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
-    <assertj-core.version>3.9.0</assertj-core.version>
-    <vavr-jackson.version>0.9.2</vavr-jackson.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-autoconfigure</artifactId>
-      <version>${spring-boot.version}</version>
+      <artifactId>spring-boot-starter-data-rest</artifactId>
     </dependency>
     <dependency>
       <groupId>io.vavr</groupId>
       <artifactId>vavr-jackson</artifactId>
-      <version>${vavr-jackson.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot</artifactId>
-      <version>${spring-boot.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <version>${vavr.version}</version>
     </dependency>
     <dependency>
       <groupId>com.rdelgatte.hexagonal</groupId>
@@ -57,14 +41,6 @@
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
       <version>${assertj-core.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <!-- A temporary Mockito extension. Will be removed once Mockito creates their own.
-       See https://github.com/mockito/mockito/issues/445 -->
-      <groupId>name.falgout.jeffrey.testing.junit5</groupId>
-      <artifactId>mockito-extension</artifactId>
-      <version>1.0.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
