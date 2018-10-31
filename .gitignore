@@ -1,2 +1,6 @@
 **.iml
 .idea
+domain/target
+infrastructure/memory-persistence/target
+infrastructure/mysql-persistence/target
+infrastructure/rest-client/target
