@@ -64,8 +64,9 @@ class ProductControllerTest {
     when(productServiceMock.findProductByCode(productCode)).thenReturn(Option(product));
 
     Option<Product> actual = cut.find(productCode);
-    assertThat(actual).isEqualTo(product);
+    assertThat(actual).isEqualTo(Option(product));
   }
+
   void findExistingProduct() {
     when(productServiceMock.findProductByCode(product.getCode())).thenReturn(Option(product));
 
