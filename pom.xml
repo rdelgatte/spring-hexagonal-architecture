@@ -67,6 +67,14 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.github.mautini/schemaorg-java -->
+    <dependency>
+      <groupId>com.github.mautini</groupId>
+      <artifactId>schemaorg-java</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+
   </dependencies>
 
   <build>
