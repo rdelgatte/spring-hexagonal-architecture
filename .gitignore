@@ -1,2 +1,5 @@
 **.iml
 .idea
+
+# Maven build
+target

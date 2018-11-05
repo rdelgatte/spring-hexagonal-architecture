@@ -1,0 +1,17 @@
+batch:
+  csv:
+    products:
+      cron: 0 0 0 * * ?
+      file: /tmp/products.csv
+    prices:
+      cron: 0 0 0 * * ?
+      file: /tmp/prices.csv
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/hexagonal?useSSL=false
+    username: hexagonal
+    password: hexagonal
