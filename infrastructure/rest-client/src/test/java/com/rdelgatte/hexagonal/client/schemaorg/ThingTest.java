@@ -67,6 +67,30 @@ public class ThingTest {
     }
 
     @Test
+    void serializeOffer () {
+        JsonLdSerializer serializer = new JsonLdSerializer(true /* setPrettyPrinting */);
+        Offer object =
+                CoreFactory.newOfferBuilder()
+                        .addJsonLdContext(
+                                JsonLdFactory.newContextBuilder()
+                                        .setBase("http://www.decathlon.com")
+                                        .build())
+                        .addSeller(
+                                CoreFactory.newOrganizationBuilder().addName("Decathlon.fr").build())
+                        .addValidFrom( "2018-11-05")
+                        .addValidThrough( "2019-11-05")
+                        .build();
+        try {
+            String jsonLdStr = serializer.serialize(object);
+            log.debug(jsonLdStr);
+        } catch (JsonLdSyntaxException e) {
+            // Errors related to JSON-LD format and schema.org terms in JSON-LD
+        } catch (JsonIOException e) {
+            // Errors related to JSON format
+        }
+    }
+    
+    @Test
     void Deserialize() {
         JsonLdSerializer serializer = new JsonLdSerializer(true /* setPrettyPrinting */);
         String jsonLd =
